@@ -81,7 +81,7 @@ function Hero() {
     <section
       class={tw`w-full flex flex-wrap-reverse gap-x-[100px] gap-y-[20px] justify-center items-center`}
     >
-      <h1 class={tw`text-center text-5xl lg:text-7xl font-bold`}>
+      <h1 class={tw`text-center text-5xl lg:text-7xl`}>
         Em's Art Gallery
       </h1>
       <img

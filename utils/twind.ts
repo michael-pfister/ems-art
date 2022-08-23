@@ -6,7 +6,7 @@ export const config: Configuration = {
   mode: "silent",
   theme: {
     fontFamily: {
-      "sans": ["Helvetica", "Helvetica"],
+      "sans": ["Georgia", "Georgia"],
     },
     extend: {
       spacing: {
@@ -22,9 +22,7 @@ export const config: Configuration = {
         "dark-beige": "#ddb892",
         "light-brown": "#b08968",
         "medium-brown": "#9c6644",
-        "dark-brown": "#7f5539",
-        "black": "#000000",
-        "white": "#ffffff"
+        "dark-brown": "#7f5539"
       }
     },
   },
