@@ -16,14 +16,14 @@ export const config: Configuration = {
       borderRadius: {
         "4xl": "2rem",
       },
-      colors:{
+      colors: {
         "light-beige": "#ede0d4",
         "medium-beige": "#e6ccb2",
         "dark-beige": "#ddb892",
         "light-brown": "#b08968",
         "medium-brown": "#9c6644",
-        "dark-brown": "#7f5539"
-      }
+        "dark-brown": "#7f5539",
+      },
     },
   },
 };

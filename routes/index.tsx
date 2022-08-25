@@ -1,10 +1,11 @@
 /** @jsx h */
-import { h } from "preact";
+import { Fragment, h } from "preact";
 import { tw } from "@twind";
 import { Head } from "https://deno.land/x/fresh@1.0.2/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import convert from "https://esm.sh/xml-js";
-import GalleryItem from "../components/GalleryItem.tsx";
+import SlideShow from "../islands/SlideShow.tsx";
+import Gallery from "../islands/Gallery.tsx";
 
 export interface DeviantArtGalleryItem {
   title: {
@@ -47,9 +48,27 @@ export interface DeviantArtGalleryItem {
     _text: string;
   };
   "media:thumbnail": [
-    { _attributes: Record<string, unknown> },
-    { _attributes: Record<string, unknown> },
-    { _attributes: Record<string, unknown> },
+    {
+      _attributes: {
+        url: string;
+        height: string;
+        width: string;
+      };
+    },
+    {
+      _attributes: {
+        url: string;
+        height: string;
+        width: string;
+      };
+    },
+    {
+      _attributes: {
+        url: string;
+        height: string;
+        width: string;
+      };
+    },
   ];
   "media:content": {
     _attributes: {
@@ -79,46 +98,103 @@ export const handler: Handlers<Array<DeviantArtGalleryItem>> = {
 function Hero() {
   return (
     <section
-      class={tw`w-full flex flex-wrap-reverse gap-x-[100px] gap-y-[20px] justify-center items-center`}
+      class={tw`w-full flex flex-wrap-reverse gap-x-[100px] gap-y-[20px] justify-center items-center pt-8 pb-32 lg:pb-40`}
     >
-      <h1 class={tw`text-center text-5xl lg:text-7xl`}>
-        Em's Art Gallery
-      </h1>
+      <div class={`w-full flex justify-center items-center`}>
+        <img
+          class={tw`w-[400px] lg:w-[600px] absolute -z-10 overflow-hidden`}
+          src="/blob.svg"
+          alt="artistic blob background"
+        />
+        <h1
+          class={tw`text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl px-8 font-bold`}
+        >
+          Em's Art Gallery
+        </h1>
+      </div>
       <img
-        class={tw`rounded-full w-[150px] lg:w-[300px]`}
-        src="/hero.jpg"
+        class={tw`w-[150px] lg:w-[300px]`}
+        src="/abstract-painting.svg"
         alt="em"
       />
     </section>
   );
 }
 
-function Gallery(
+function Slider({ items }: { items: Array<DeviantArtGalleryItem> }) {
+  return (
+    <section class={tw`h-[400px] lg:h-[600px]`}>
+      <SlideShow items={items} />
+    </section>
+  );
+}
+
+function GallerySection(
   { artGalleryItems }: { artGalleryItems: Array<DeviantArtGalleryItem> },
 ) {
   return (
+    <section>
+      <Gallery artGalleryItems={artGalleryItems.reverse()} />
+    </section>
+  );
+}
+
+function AboutMe() {
+  return (
     <section
-      class={tw`w-full flex flex-wrap gap-8 justify-center items-center my-16`}
+      class={tw`w-full flex flex-wrap justify-evenly items-center gap-16 p-8 bg-light-beige`}
     >
-      {artGalleryItems.map((item) => {
-        return <GalleryItem item={item} />;
-      })}
+      <div class={tw`w-[500px]`}>
+        <h1 class={tw`text-4xl mb-8`}>About Em</h1>
+        <p>
+          If wandered relation no surprise of screened doubtful. Overcame no
+          insisted ye of trifling husbands. Might am order hours on found. Or
+          dissimilar companions friendship impossible at diminution. Did
+          yourself carriage learning she man its replying.
+
+          <br />
+          <br />
+
+          Sister piqued living her you enable mrs off spirit really. Parish
+          oppose repair is me misery. Quick may saw style after money mrs.
+        </p>
+      </div>
+      <img
+        class={tw`w-[400px] rounded-full shadow-xl`}
+        src="/profile.jpg"
+        alt="Em"
+      />
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section class={tw`w-full flex flex-wrap justify-evenly gap-8`}>
+      <h1 class={tw`text-4xl`}>make this an email form</h1>
     </section>
   );
 }
 
 export default function Home(props: PageProps<Array<DeviantArtGalleryItem>>) {
   return (
-    <div class={tw`p-4 mx-auto max-w-screen-2xl h-screen`}>
+    <Fragment>
       <Head>
         <title>
           em's art 👩‍🎨
         </title>
-        <meta name="description" content="em's art artist page" />
-        <link href="/styles.css" rel="stylesheet" />
+        <meta name="description" content="Em's art artist page and gallery." />
       </Head>
       <Hero />
-      <Gallery artGalleryItems={props.data} />
-    </div>
+      <Slider
+        items={props.data.sort(function () {
+          return 0.5 - Math.random();
+        }).slice(0, 3)}
+      />{" "}
+      {/* first 3 items from shuffeled array */}
+      <GallerySection artGalleryItems={props.data} />
+      <AboutMe />
+      <Contact />
+    </Fragment>
   );
 }
