@@ -142,7 +142,7 @@ function GallerySection(
 function AboutMe() {
   return (
     <section
-      class={tw`w-full flex flex-wrap justify-evenly items-center gap-16 p-8 bg-light-beige`}
+      class={tw`w-full flex flex-wrap justify-evenly items-center gap-8 p-8 lg:py-16 ${'bg-light-beige'}`}
     >
       <div class={tw`w-[500px]`}>
         <h1 class={tw`text-4xl mb-8`}>About Em</h1>
@@ -160,7 +160,7 @@ function AboutMe() {
         </p>
       </div>
       <img
-        class={tw`w-[400px] rounded-full shadow-xl`}
+        class={tw`w-[250px] md:w-[300px] lg:w-[400px] rounded-full shadow-xl`}
         src="/profile.jpg"
         alt="Em"
       />

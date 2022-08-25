@@ -21,11 +21,11 @@ export default function Gallery(
         class={tw`w-full flex flex-wrap lg:flex-nowrap justify-evenly items-center`}
       >
         <img
-          class={tw`w-[500px]`}
+          class={tw`w-[500px] lg:w-1/2`}
           src={openGalleryItem["media:content"]._attributes.url}
           alt={openGalleryItem["media:title"]._text}
         />
-        <div class={tw`w-full flex justify-center`}>
+        <div class={tw`w-full lg:w-1/2 flex justify-center`}>
           <div class={tw`px-4 py-8 w-[500px] xl:w-[700px] children:mb-8`}>
             <button
               onClick={() => {
@@ -45,7 +45,7 @@ export default function Gallery(
             />
             <br />
             <a
-              class={tw`p-4 bg-dark-brown text-white`}
+              class={tw`p-4 ${'bg-dark-brown'} text-white`}
               href={openGalleryItem.link._text}
               target="_blank"
             >
