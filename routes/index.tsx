@@ -172,7 +172,7 @@ function AboutMe() {
 
 function Contact() {
   return (
-    <section class={tw`w-full px-4 py-16 flex flex-wrap justify-evenly gap-8`}>
+    <section class={tw`w-full px-4 py-16 flex flex-wrap justify-evenly items-center gap-8`}>
       <div>
         <h1 class={tw`text-4xl mb-6`}>Let's Talk!</h1>
         <p class={tw`max-w-[500px]`}>
