@@ -184,16 +184,24 @@ export default function Home(props: PageProps<Array<DeviantArtGalleryItem>>) {
         </title>
         <meta name="description" content="Em's art artist page and gallery." />
       </Head>
-      <Hero />
-      <Slider
-        items={props.data.sort(function () {
-          return 0.5 - Math.random();
-        }).slice(0, 3)}
-      />{" "}
-      {/* first 3 items from shuffeled array */}
-      <GallerySection artGalleryItems={props.data} />
-      <AboutMe />
-      <Contact />
+      <header class={tw`${css({"box-shadow": "0 5px 20px 10px rgba(0, 0, 0, 0.5);"})}`}>
+        <Hero />
+      </header>
+      <main>
+        <Slider
+          items={props.data.sort(function () {
+            return 0.5 - Math.random();
+          }).slice(0, 3)}
+        />{" "}
+        {/* first 3 items from shuffeled array */}
+        <GallerySection artGalleryItems={props.data} />
+        <AboutMe />
+        <Contact />
+      </main>
+      <footer class={tw`border-t text-xl p-8 flex justify-center gap-16`}>
+          <a rel="noopener" href="https://www.tiktok.com/@chantistuff" target="_blank">TikTok</a>
+          <a rel="noopener" href="https://www.instagram.com/em.laaa/" target="_blank">Instagram</a>
+      </footer>
     </Fragment>
   );
 }

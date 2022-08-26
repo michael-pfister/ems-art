@@ -28,7 +28,7 @@ export default function SlideShow(
           "background-image": `url(${
             items[index]["media:content"]._attributes.url
           });`,
-          "filter": "brightness(0.5)",
+          "filter": "brightness(0.2)",
         })
       }`}
     >

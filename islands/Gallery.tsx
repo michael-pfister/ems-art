@@ -18,15 +18,15 @@ export default function Gallery(
   if (openGalleryItem) {
     return (
       <div
-        class={tw`w-full flex flex-wrap lg:flex-nowrap justify-evenly items-center`}
+        class={tw`w-full flex flex-wrap justify-evenly items-center sm:py-16`}
       >
         <img
-          class={tw`w-[500px] lg:w-1/2`}
+          class={tw`w-full sm:w-[600px] rounded shadow-2xl`}
           src={openGalleryItem["media:content"]._attributes.url}
           alt={openGalleryItem["media:title"]._text}
         />
-        <div class={tw`w-full lg:w-1/2 flex justify-center`}>
-          <div class={tw`p-8 w-[500px] xl:w-[700px] children:mb-8`}>
+        <div class={tw`flex justify-center`}>
+          <div class={tw`p-8 max-w-[500px] xl:max-w-[600px] children:mb-8`}>
             <button
               onClick={() => {
                 setOpenGalleryItem(undefined);
