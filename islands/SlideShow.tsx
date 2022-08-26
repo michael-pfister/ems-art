@@ -25,19 +25,13 @@ export default function SlideShow(
     <div
       class={tw`w-full h-full flex flex-wrap justify-center content-center overflow-hidden bg-cover bg-center bg-no-repeat ${
         css({
-          "background-image":
-            `linear-gradient(rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.5) 90%, rgba(0,0,0,0.8) 100%), url(${
-              items[index]["media:content"]._attributes.url
-            });`,
-          "text-shadow": "0 0 10px #000",
+          "background-image": `url(${
+            items[index]["media:content"]._attributes.url
+          });`,
+          "filter": "brightness(0.5)",
         })
       }`}
     >
-      <h1
-        class={tw`text-2xl sm:text-5xl lg:text-7xl xl:text-8xl text-white`}
-      >
-        {items[index]["media:title"]._text}
-      </h1>
     </div>
   );
 }

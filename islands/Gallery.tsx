@@ -26,7 +26,7 @@ export default function Gallery(
           alt={openGalleryItem["media:title"]._text}
         />
         <div class={tw`w-full lg:w-1/2 flex justify-center`}>
-          <div class={tw`px-4 py-8 w-[500px] xl:w-[700px] children:mb-8`}>
+          <div class={tw`p-8 w-[500px] xl:w-[700px] children:mb-8`}>
             <button
               onClick={() => {
                 setOpenGalleryItem(undefined);

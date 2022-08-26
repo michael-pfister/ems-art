@@ -59,15 +59,19 @@ export default function ContactForm() {
       />
       <br />
       <button
-        class={tw`p-3 flex justify-center text-white cursor-pointer ${(()=>{switch(formState){
-            case "initialized":
-            case "loading":
+        class={tw`p-3 flex justify-center text-white cursor-pointer ${
+          (() => {
+            switch (formState) {
+              case "initialized":
+              case "loading":
                 return "bg-dark-brown";
-            case "submitted":
+              case "submitted":
                 return "bg-green-700";
-            case "error":
+              case "error":
                 return "bg-red-600";
-        }})()}`}
+            }
+          })()
+        }`}
         type="submit"
         disabled={formState !== "initialized"}
       >

@@ -1,12 +1,12 @@
 /** @jsx h */
 import { Fragment, h } from "preact";
 import { tw } from "@twind";
+import { css } from "twind/css";
 import { Head } from "https://deno.land/x/fresh@1.0.2/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import convert from "https://esm.sh/xml-js";
 import SlideShow from "../islands/SlideShow.tsx";
 import Gallery from "../islands/Gallery.tsx";
-import { css } from "https://esm.sh/v91/twind@0.16.17/css/css.d.ts";
 import ContactForm from "../islands/ContactForm.tsx";
 
 export interface DeviantArtGalleryItem {
@@ -100,32 +100,22 @@ export const handler: Handlers<Array<DeviantArtGalleryItem>> = {
 function Hero() {
   return (
     <section
-      class={tw`w-full flex flex-wrap-reverse gap-x-[100px] gap-y-[20px] justify-center items-center pt-8 pb-32 lg:pb-40`}
+      class={tw`w-full h-[200px] flex flex-wrap-reverse gap-16 justify-center items-center`}
     >
-      <div class={`w-full flex justify-center items-center`}>
-        <img
-          class={tw`w-[400px] absolute -z-10 overflow-hidden`}
-          src="/blob.svg"
-          alt="artistic blob background"
-        />
-        <h1
-          class={tw`text-center text-5xl sm:text-6xl md:text-7xl px-8 font-bold`}
-        >
-          Em's Art Gallery
-        </h1>
-      </div>
-      <img
-        class={tw`w-[150px]`}
-        src="/abstract-painting.svg"
-        alt="em"
-      />
+      <h1
+        class={tw`w-full text-left text-white text-5xl sm:text-6xl md:text-7xl px-8 font-bold ${
+          css({ "text-shadow": "0 0 10px #000;" })
+        }`}
+      >
+        Em's Art Gallery
+      </h1>
     </section>
   );
 }
 
 function Slider({ items }: { items: Array<DeviantArtGalleryItem> }) {
   return (
-    <section class={tw`h-[400px] lg:h-[600px]`}>
+    <section class={tw`w-full h-[200px] absolute top-0 -z-20`}>
       <SlideShow items={items} />
     </section>
   );
@@ -144,35 +134,34 @@ function GallerySection(
 function AboutMe() {
   return (
     <section
-      class={tw`w-full flex flex-wrap justify-evenly items-center gap-8 p-8 lg:py-16 ${"bg-medium-beige"}`}
+      class={tw`w-full flex flex-wrap justify-evenly items-center gap-8 pr-8 pl-16 py-16 lg:py-32`}
     >
-      <div class={tw`w-[500px]`}>
-        <h1 class={tw`text-4xl mb-8`}>About Em</h1>
+      <div class={tw`w-[500px] border p-8`}>
+        <img
+          class={tw`w-[75px] lg:w-[100px] rounded-full absolute translate-[-70px] lg:translate-[-90px]`}
+          src="/profile.jpg"
+          alt="Em"
+        />
         <p>
-          If wandered relation no surprise of screened doubtful. Overcame no
-          insisted ye of trifling husbands. Might am order hours on found. Or
-          dissimilar companions friendship impossible at diminution. Did
-          yourself carriage learning she man its replying.
-
-          <br />
-          <br />
-
-          Sister piqued living her you enable mrs off spirit really. Parish
-          oppose repair is me misery. Quick may saw style after money mrs.
+          „ If wandered relation no surprise of screened doubtful. Overcame no
+          insisted ye of trifling husbands. Or dissimilar companions friendship
+          impossible at diminution. Did yourself carriage learning she man its
+          replying. “
+        </p>
+        <br />
+        <p class={tw`w-full text-right text-gray-500`}>
+          <i>~ Em</i>
         </p>
       </div>
-      <img
-        class={tw`w-[250px] md:w-[300px] lg:w-[400px] rounded-full shadow-xl`}
-        src="/profile.jpg"
-        alt="Em"
-      />
     </section>
   );
 }
 
 function Contact() {
   return (
-    <section class={tw`w-full px-4 py-16 flex flex-wrap justify-evenly items-center gap-8`}>
+    <section
+      class={tw`w-full px-4 py-16 flex flex-wrap justify-evenly items-center gap-8`}
+    >
       <div>
         <h1 class={tw`text-4xl mb-6`}>Let's Talk!</h1>
         <p class={tw`max-w-[500px]`}>
