@@ -45,7 +45,7 @@ export default function Gallery(
             />
             <br />
             <a
-              class={tw`p-4 ${'bg-dark-brown'} text-white`}
+              class={tw`p-4 ${"bg-dark-brown"} text-white`}
               href={openGalleryItem.link._text}
               target="_blank"
             >
@@ -75,15 +75,18 @@ export default function Gallery(
           })}
         </div>
         {artGalleryItems.length > 5 && (
-          <div class={tw`pt-16 flex gap-16`}>
+          <div class={tw`mt-16 p-4 flex gap-16`}>
             {index > 4 && (
               <button
+                class={tw`p-4 border rounded ${"bg-dark-brown"}`}
                 onClick={() => {
                   setIndex(index - 5);
                 }}
               >
                 <img
-                  class={tw`w-12 rotate-180`}
+                  class={tw`rotate-180 w-8 ${
+                    css({ "filter": "invert(100%);" })
+                  }`}
                   src="/next.svg"
                   alt="previous 5 artworks"
                 />
@@ -91,11 +94,16 @@ export default function Gallery(
             )}
             {artGalleryItems.length > index + 5 && (
               <button
+                class={tw`p-4 border rounded ${"bg-dark-brown"}`}
                 onClick={() => {
                   setIndex(index + 5);
                 }}
               >
-                <img class={tw`w-12`} src="/next.svg" alt="next 5 artworks" />
+                <img
+                  class={tw`w-8 ${css({ "filter": "invert(100%);" })}`}
+                  src="/next.svg"
+                  alt="next 5 artworks"
+                />
               </button>
             )}
           </div>

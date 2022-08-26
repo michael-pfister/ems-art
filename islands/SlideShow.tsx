@@ -34,7 +34,7 @@ export default function SlideShow(
       }`}
     >
       <h1
-        class={tw`text-2xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold text-white`}
+        class={tw`text-2xl sm:text-5xl lg:text-7xl xl:text-8xl text-white`}
       >
         {items[index]["media:title"]._text}
       </h1>

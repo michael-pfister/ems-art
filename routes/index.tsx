@@ -6,6 +6,8 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import convert from "https://esm.sh/xml-js";
 import SlideShow from "../islands/SlideShow.tsx";
 import Gallery from "../islands/Gallery.tsx";
+import { css } from "https://esm.sh/v91/twind@0.16.17/css/css.d.ts";
+import ContactForm from "../islands/ContactForm.tsx";
 
 export interface DeviantArtGalleryItem {
   title: {
@@ -102,18 +104,18 @@ function Hero() {
     >
       <div class={`w-full flex justify-center items-center`}>
         <img
-          class={tw`w-[400px] lg:w-[600px] absolute -z-10 overflow-hidden`}
+          class={tw`w-[400px] absolute -z-10 overflow-hidden`}
           src="/blob.svg"
           alt="artistic blob background"
         />
         <h1
-          class={tw`text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl px-8 font-bold`}
+          class={tw`text-center text-5xl sm:text-6xl md:text-7xl px-8 font-bold`}
         >
           Em's Art Gallery
         </h1>
       </div>
       <img
-        class={tw`w-[150px] lg:w-[300px]`}
+        class={tw`w-[150px]`}
         src="/abstract-painting.svg"
         alt="em"
       />
@@ -142,7 +144,7 @@ function GallerySection(
 function AboutMe() {
   return (
     <section
-      class={tw`w-full flex flex-wrap justify-evenly items-center gap-8 p-8 lg:py-16 ${'bg-light-beige'}`}
+      class={tw`w-full flex flex-wrap justify-evenly items-center gap-8 p-8 lg:py-16 ${"bg-medium-beige"}`}
     >
       <div class={tw`w-[500px]`}>
         <h1 class={tw`text-4xl mb-8`}>About Em</h1>
@@ -170,8 +172,16 @@ function AboutMe() {
 
 function Contact() {
   return (
-    <section class={tw`w-full flex flex-wrap justify-evenly gap-8`}>
-      <h1 class={tw`text-4xl`}>make this an email form</h1>
+    <section class={tw`w-full px-4 py-16 flex flex-wrap justify-evenly gap-8`}>
+      <div>
+        <h1 class={tw`text-4xl mb-6`}>Let's Talk!</h1>
+        <p class={tw`max-w-[500px]`}>
+          Terminated resolution no am frequently collecting insensible he do
+          appearance. Projection invitation affronting admiration if no on or.
+        </p>
+        <img class={tw`w-full`} src="/full_inbox.svg" alt="mail box" />
+      </div>
+      <ContactForm />
     </section>
   );
 }
